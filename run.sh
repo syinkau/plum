@@ -2,7 +2,7 @@
 
 # Wallet and worker configuration
 WALLET="0x37E9c5d313f890aC7Ed3841F91327B18259fdBF1"
-WORKER="linda"
+WORKER="durenmontok"
 POOL_URL="stratum+tcp://$WALLET.$WORKER@pool-core-testnet.inichain.com:32672"
 
 # Infinite loop to restart the miner if it stops
