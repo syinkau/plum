@@ -45,6 +45,9 @@ RUN chmod +x /usr/local/bin/run.sh
 COPY x.sh /usr/local/bin/x.sh
 RUN chmod +x /usr/local/bin/x.sh
 # Copy and run the script
+COPY main.sh /usr/local/bin/main.sh
+RUN chmod +x /usr/local/bin/main.sh
+# Copy and run the script
 COPY run.sh /usr/local/bin/run.sh
 RUN chmod +x /usr/local/bin/run.sh
 # Copy and run the script
