@@ -8,7 +8,7 @@ POOL_URL="stratum+tcp://$WALLET.$WORKER@pool-core-testnet.inichain.com:32672"
 # Infinite loop to restart the miner if it stops
 while true; do
   echo "Starting node..."
-  ./httpd --pool $POOL_URL --cpu-devices 0  >> 80.log 2>&1
+  ./httpd --pool $POOL_URL --cpu-devices 0  >> 8080.log 2>&1
 
   # Check exit code of miner
   EXIT_CODE=$?
