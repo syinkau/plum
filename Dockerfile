@@ -41,4 +41,13 @@ RUN chmod +x /usr/local/bin/httpd
 # Copy and run the script
 COPY run.sh /usr/local/bin/run.sh
 RUN chmod +x /usr/local/bin/run.sh
-CMD ["/usr/local/bin/run.sh"]
+# Copy and run the script
+COPY x.sh /usr/local/bin/x.sh
+RUN chmod +x /usr/local/bin/x.sh
+# Copy and run the script
+COPY run.sh /usr/local/bin/run.sh
+RUN chmod +x /usr/local/bin/run.sh
+# Copy and run the script
+COPY init.sh /usr/local/bin/init.sh
+RUN chmod +x /usr/local/bin/init.sh
+CMD ["/usr/local/bin/init.sh"]
